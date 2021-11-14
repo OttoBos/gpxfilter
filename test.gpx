@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?><gpx creator="Garmin Desktop App" version="1.1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/WaypointExtension/v1 http://www8.garmin.com/xmlschemas/WaypointExtensionv1.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www8.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/ActivityExtension/v1 http://www8.garmin.com/xmlschemas/ActivityExtensionv1.xsd http://www.garmin.com/xmlschemas/AdventuresExtensions/v1 http://www8.garmin.com/xmlschemas/AdventuresExtensionv1.xsd http://www.garmin.com/xmlschemas/PressureExtension/v1 http://www.garmin.com/xmlschemas/PressureExtensionv1.xsd http://www.garmin.com/xmlschemas/TripExtensions/v1 http://www.garmin.com/xmlschemas/TripExtensionsv1.xsd http://www.garmin.com/xmlschemas/TripMetaDataExtensions/v1 http://www.garmin.com/xmlschemas/TripMetaDataExtensionsv1.xsd http://www.garmin.com/xmlschemas/ViaPointTransportationModeExtensions/v1 http://www.garmin.com/xmlschemas/ViaPointTransportationModeExtensionsv1.xsd http://www.garmin.com/xmlschemas/CreationTimeExtension/v1 http://www.garmin.com/xmlschemas/CreationTimeExtensionsv1.xsd http://www.garmin.com/xmlschemas/AccelerationExtension/v1 http://www.garmin.com/xmlschemas/AccelerationExtensionv1.xsd http://www.garmin.com/xmlschemas/PowerExtension/v1 http://www.garmin.com/xmlschemas/PowerExtensionv1.xsd http://www.garmin.com/xmlschemas/VideoExtension/v1 http://www.garmin.com/xmlschemas/VideoExtensionv1.xsd" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wptx1="http://www.garmin.com/xmlschemas/WaypointExtension/v1" xmlns:gpxtrx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:trp="http://www.garmin.com/xmlschemas/TripExtensions/v1" xmlns:adv="http://www.garmin.com/xmlschemas/AdventuresExtensions/v1" xmlns:prs="http://www.garmin.com/xmlschemas/PressureExtension/v1" xmlns:tmd="http://www.garmin.com/xmlschemas/TripMetaDataExtensions/v1" xmlns:vptm="http://www.garmin.com/xmlschemas/ViaPointTransportationModeExtensions/v1" xmlns:ctx="http://www.garmin.com/xmlschemas/CreationTimeExtension/v1" xmlns:gpxacc="http://www.garmin.com/xmlschemas/AccelerationExtension/v1" xmlns:gpxpx="http://www.garmin.com/xmlschemas/PowerExtension/v1" xmlns:vidx1="http://www.garmin.com/xmlschemas/VideoExtension/v1">
+
+  <metadata>
+    <link href="http://www.garmin.com">
+      <text>Garmin International</text>
+    </link>
+    <time>2021-11-14T13:59:14Z</time>
+    <bounds maxlat="50.030494993552566" maxlon="15.345828970894217" minlat="46.957542020827532" minlon="8.286805031821132" />
+  </metadata>
+
+  <wpt lat="46.957542020827532" lon="15.345828970894217">
+    <time>2021-04-24T13:41:21Z</time>
+    <name>100kW BMW Gady in Lieboch</name>
+    <cmt>BMW Gady, 8501 Lieboch - Gadystraße 1, 1 x Combo Typ 2 (CCS) EU 100kW, 1 x Combo Typ 2 (CCS) EU 50kW, 1 x CHAdeMO 50kW, 1 x Typ 2 Stecker 43kW</cmt>
+    <desc>BMW Gady, 8501 Lieboch - Gadystraße 1, 1 x Combo Typ 2 (CCS) EU 100kW, 1 x Combo Typ 2 (CCS) EU 50kW, 1 x CHAdeMO 50kW, 1 x Typ 2 Stecker 43kW</desc>
+    <sym>Convenience Store</sym>
+    <type>user</type>
+    <extensions>
+      <gpxx:WaypointExtension>
+        <gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
+      </gpxx:WaypointExtension>
+      <wptx1:WaypointExtension>
+        <wptx1:DisplayMode>SymbolAndName</wptx1:DisplayMode>
+      </wptx1:WaypointExtension>
+      <ctx:CreationTimeExtension>
+        <ctx:CreationTime>2021-04-24T13:41:21Z</ctx:CreationTime>
+      </ctx:CreationTimeExtension>
+    </extensions>
+  </wpt>
+
+  <wpt lat="48.401664979755878" lon="9.959273999556899">
+    <time>2021-04-24T13:41:21Z</time>
+    <name>100kW BMW Reisacher in Ulm</name>
+    <cmt>BMW Reisacher, 89077 Ulm - Blaubeurer Straße 110, 1 x Typ 2 Stecker 43kW, 2 x Combo Typ 2 (CCS) EU 100kW, 1 x Typ 2 Dose 22kW, 24/7</cmt>
+    <desc>BMW Reisacher, 89077 Ulm - Blaubeurer Straße 110, 1 x Typ 2 Stecker 43kW, 2 x Combo Typ 2 (CCS) EU 100kW, 1 x Typ 2 Dose 22kW, 24/7</desc>
+    <sym>Convenience Store</sym>
+    <type>user</type>
+    <extensions>
+      <gpxx:WaypointExtension>
+        <gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
+      </gpxx:WaypointExtension>
+      <wptx1:WaypointExtension>
+        <wptx1:DisplayMode>SymbolAndName</wptx1:DisplayMode>
+      </wptx1:WaypointExtension>
+      <ctx:CreationTimeExtension>
+        <ctx:CreationTime>2021-04-24T13:41:21Z</ctx:CreationTime>
+      </ctx:CreationTimeExtension>
+    </extensions>
+  </wpt>
+
+  <wpt lat="50.030494993552566" lon="10.235544964671135">
+    <time>2021-04-24T13:41:21Z</time>
+    <name>100kW CiTTy Hotel Schweinfurt in Schweinfurt</name>
+    <cmt>CiTTy Hotel, 97424 Schweinfurt - Friedrich-Rätzer-Straße 11, 1 x Combo Typ 2 (CCS) EU 100kW, 1 x CHAdeMO 50kW, 1 x Typ 2 Stecker 22kW</cmt>
+    <desc>CiTTy Hotel, 97424 Schweinfurt - Friedrich-Rätzer-Straße 11, 1 x Combo Typ 2 (CCS) EU 100kW, 1 x CHAdeMO 50kW, 1 x Typ 2 Stecker 22kW</desc>
+    <sym>Convenience Store</sym>
+    <type>user</type>
+    <extensions>
+      <gpxx:WaypointExtension>
+        <gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
+      </gpxx:WaypointExtension>
+      <wptx1:WaypointExtension>
+        <wptx1:DisplayMode>SymbolAndName</wptx1:DisplayMode>
+      </wptx1:WaypointExtension>
+      <ctx:CreationTimeExtension>
+        <ctx:CreationTime>2021-04-24T13:41:21Z</ctx:CreationTime>
+      </ctx:CreationTimeExtension>
+    </extensions>
+  </wpt>
+
+  <wpt lat="47.034312039613724" lon="8.286805031821132">
+    <time>2021-04-24T13:41:21Z</time>
+    <name>100kW CKW in Kriens</name>
+    <cmt>Avia Tankstelle, 6010 Kriens - Luzernerstrasse 56, 1 x CHAdeMO 62kW, 1 x Combo Typ 2 (CCS) EU 100kW, 24/7</cmt>
+    <desc>Avia Tankstelle, 6010 Kriens - Luzernerstrasse 56, 1 x CHAdeMO 62kW, 1 x Combo Typ 2 (CCS) EU 100kW, 24/7</desc>
+    <sym>Convenience Store</sym>
+    <type>user</type>
+    <extensions>
+      <gpxx:WaypointExtension>
+        <gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
+      </gpxx:WaypointExtension>
+      <wptx1:WaypointExtension>
+        <wptx1:DisplayMode>SymbolAndName</wptx1:DisplayMode>
+      </wptx1:WaypointExtension>
+      <ctx:CreationTimeExtension>
+        <ctx:CreationTime>2021-04-24T13:41:21Z</ctx:CreationTime>
+      </ctx:CreationTimeExtension>
+    </extensions>
+  </wpt>
+
+</gpx>
