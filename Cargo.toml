@@ -10,4 +10,3 @@ structopt = "0.3.13"
 gpx = "0.8.5"
 unicode-bom = "1.1.4"
 regex = "1"
-

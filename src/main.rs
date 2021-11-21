@@ -1,12 +1,7 @@
-use gpx::errors::GpxError;
-use gpx::read;
-use gpx::Gpx;
 use regex::Regex;
-use std::fs::File;
-use std::io::prelude::*;
-use std::io::BufReader;
 use structopt::StructOpt;
-use unicode_bom::Bom;
+
+use gpxfilter::Cli;
 
 /// Load a GPX file and filter the POIs based on some parameters provided
 
@@ -15,7 +10,7 @@ fn main() {
     println!("Loading file {:?}.", args.path);
 
     // Open GPX
-    let gpx: Result<Gpx, GpxError> = load_gpx(args);
+    let gpx = gpxfilter::load_gpx(args);
 
     match gpx {
         Err(e) => {
@@ -33,35 +28,4 @@ fn main() {
             }
         }
     }
-}
-
-#[derive(StructOpt)]
-pub struct Cli {
-    /// The path to the GPX file to read
-    #[structopt(parse(from_os_str))]
-    path: std::path::PathBuf,
-}
-
-pub fn load_gpx(args: Cli) -> Result<Gpx, GpxError> {
-    // detect BOM
-    let bom = getbom(&args.path.to_string_lossy());
-
-    let file = File::open(args.path).unwrap();
-    let mut reader = BufReader::new(file);
-
-    // skip BOM (assume always 3 bytes)
-    if bom != Bom::Null {
-        let mut x = [0; 3];
-        let _y = reader.read_exact(&mut x);
-    }
-
-    // Open GPX
-    let gpx: Result<Gpx, GpxError> = read(reader);
-
-    gpx
-}
-
-fn getbom(path: &str) -> Bom {
-    let mut file = File::open(path).unwrap();
-    Bom::from(&mut file)
 }
