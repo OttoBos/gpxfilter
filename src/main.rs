@@ -1,29 +1,30 @@
-use regex::Regex;
 use structopt::StructOpt;
 
-use gpxfilter::Cli;
-
-/// Load a GPX file and filter the POIs based on some parameters provided
+use gpxfilter::{filter_gpx, load_gpx, write_gpx, Cli};
 
 fn main() {
     let args = Cli::from_args();
-    println!("Loading file {:?}.", args.path);
+    println!("Loading file {:?}.", args.input);
 
     // Open GPX
-    let gpx = gpxfilter::load_gpx(args);
-
-    match gpx {
+    match load_gpx(args.input) {
         Err(e) => {
             println!("{}", e)
         }
         Ok(gpx) => {
-            println!("Found {} waypoints.", gpx.waypoints.len());
-            println!("Waypoints with > 1x CCS:");
-            // filter with regex on description
-            let re = Regex::new(r"\b([2-9]|1[0-9]|2[0-9]|3[0-9])\b x Combo Typ 2 \(CCS\)").unwrap();
-            for wp in gpx.waypoints {
-                if re.is_match(&wp.description.unwrap_or_default()) {
-                    println!("- {}", wp.name.unwrap_or("Unnamed waypoint".to_string()));
+            println!("Input file has {} waypoints.", gpx.waypoints.len());
+
+            // Filter waypoints
+            let filtered_gpx = filter_gpx(&args.filter, gpx);
+            println!("Found {} waypoints.", filtered_gpx.waypoints.len());
+
+            // write result to output file
+            match write_gpx(&filtered_gpx, args.output) {
+                Ok(_) => {
+                    println!("Done!")
+                }
+                Err(e) => {
+                    println!("{}", e)
                 }
             }
         }
