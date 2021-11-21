@@ -22,6 +22,9 @@ pub struct Cli {
         default_value = r"\b([2-9]|1[0-9]|2[0-9]|3[0-9])\b x Combo Typ 2 \(CCS\)"
     )]
     pub filter: String,
+    // apply a new symbol to the resulting waypoints
+    #[structopt(short = "s", long = "symbol", default_value = "")]
+    pub symbol: String,
 }
 
 /// Load a GPX file from the path specified
@@ -58,12 +61,26 @@ pub fn filter_gpx(filter: &str, input_gpx: Gpx) -> Gpx {
     // let no_routes: Vec<gpx::Route> = Vec::new();
 
     Gpx {
-        version: input_gpx.version,
         creator: my_name,
-        metadata: input_gpx.metadata,
         waypoints: found_waypoints,
-        tracks: input_gpx.tracks,
-        routes: input_gpx.routes,
+        ..input_gpx
+    }
+}
+
+pub fn set_symbol(symbol: &str, input_gpx: Gpx) -> Gpx {
+    let updated_waypoints = input_gpx
+        .waypoints
+        .into_iter()
+        .map(|wp| {
+            let mut new_wp = wp.clone();
+            new_wp.symbol = Some(symbol.to_string());
+            new_wp
+        })
+        .collect();
+
+    Gpx {
+        waypoints: updated_waypoints,
+        ..input_gpx
     }
 }
 

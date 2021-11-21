@@ -1,6 +1,6 @@
 use structopt::StructOpt;
 
-use gpxfilter::{filter_gpx, load_gpx, write_gpx, Cli};
+use gpxfilter::*;
 
 fn main() {
     let args = Cli::from_args();
@@ -12,11 +12,17 @@ fn main() {
             println!("{}", e)
         }
         Ok(gpx) => {
-            println!("Input file has {} waypoints.", gpx.waypoints.len());
+            println!("-> Input file has {} waypoints.", gpx.waypoints.len());
 
             // Filter waypoints
-            let filtered_gpx = filter_gpx(&args.filter, gpx);
-            println!("Found {} waypoints.", filtered_gpx.waypoints.len());
+            let mut filtered_gpx = filter_gpx(&args.filter, gpx);
+            println!("-> Found {} waypoints.", filtered_gpx.waypoints.len());
+
+            // update symbol, if required
+            if !(String::is_empty(&args.symbol)) {
+                filtered_gpx = set_symbol(&args.symbol, filtered_gpx);
+                println!("-> Updated symbols to {}.", args.symbol);
+            }
 
             // write result to output file
             match write_gpx(&filtered_gpx, args.output) {
