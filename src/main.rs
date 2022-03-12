@@ -15,7 +15,7 @@ fn main() {
             println!("-> Input file has {} waypoints.", gpx.waypoints.len());
 
             // Filter waypoints
-            let mut filtered_gpx = filter_gpx(&args.filter, gpx);
+            let mut filtered_gpx = filter_wpt_by_description(&args.filter, gpx);
             println!("-> Found {} waypoints.", filtered_gpx.waypoints.len());
 
             // update symbol, if required

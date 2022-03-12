@@ -45,10 +45,8 @@ pub fn load_gpx(path: std::path::PathBuf) -> Result<Gpx, Box<dyn std::error::Err
     Ok(read(reader)?)
 }
 
-// filter the waypoints of a gpx
-pub fn filter_gpx(filter: &str, input_gpx: Gpx) -> Gpx {
-    let my_name = Some(env!("CARGO_PKG_NAME").to_string());
-
+// filter the waypoints of a gpx based on a regex on the description
+pub fn filter_wpt_by_description(filter: &str, input_gpx: Gpx) -> Gpx {
     let re = Regex::new(filter).unwrap();
     let empty_string = String::new();
     let found_waypoints = input_gpx
@@ -56,17 +54,14 @@ pub fn filter_gpx(filter: &str, input_gpx: Gpx) -> Gpx {
         .into_iter()
         .filter(|wp| re.is_match(&wp.description.as_ref().unwrap_or(&empty_string)))
         .collect();
-    // let no_metadata: Option<gpx::Metadata> = Some(Default::default());
-    // let no_tracks: Vec<gpx::Track> = Vec::new();
-    // let no_routes: Vec<gpx::Route> = Vec::new();
 
     Gpx {
-        creator: my_name,
         waypoints: found_waypoints,
         ..input_gpx
     }
 }
 
+// update the GPX symbol of the waypoints
 pub fn set_symbol(symbol: &str, input_gpx: Gpx) -> Gpx {
     let updated_waypoints = input_gpx
         .waypoints
@@ -84,11 +79,13 @@ pub fn set_symbol(symbol: &str, input_gpx: Gpx) -> Gpx {
     }
 }
 
+// write GPX to file
 pub fn write_gpx(gpx: &Gpx, path: std::path::PathBuf) -> Result<(), Box<dyn std::error::Error>> {
     let file = File::create(path)?;
     Ok(gpx::write(&gpx, file)?)
 }
 
+// open a file and test for the Byte Order Marker
 fn getbom(path: &str) -> Result<Bom, std::io::Error> {
     let mut file = File::open(path)?;
     Ok(Bom::from(&mut file))
