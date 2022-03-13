@@ -95,6 +95,30 @@ fn sum_ccs(wpt: &Waypoint, re: &Regex) -> i32 {
         .sum()
 }
 
+// update name based on CCS count
+pub fn set_name_ccs_count(input_gpx: Gpx) -> Gpx {
+    let ccs_str = r"\b(\d+)\b x Combo Typ 2 \(CCS\)";
+    let ccs_regex = Regex::new(ccs_str).unwrap();
+    let name_str = r"^(\d+)kW";
+    let name_regex = Regex::new(name_str).unwrap();
+    let updated_waypoints = input_gpx
+        .waypoints
+        .into_iter()
+        .map(|wp| {
+            let x = sum_ccs(&wp, &ccs_regex);
+            let x = format!("{}x", x);
+            let mut new_wp = wp.clone();
+            new_wp.name = Some(name_regex.replace_all(&new_wp.name.unwrap(), x).to_string());
+            new_wp
+        })
+        .collect();
+
+    Gpx {
+        waypoints: updated_waypoints,
+        ..input_gpx
+    }
+}
+
 // update the GPX symbol of the waypoints
 pub fn set_symbol(symbol: &str, input_gpx: Gpx) -> Gpx {
     let updated_waypoints = input_gpx

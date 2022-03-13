@@ -15,6 +15,10 @@ Where:
 - `--filter` or `-f`: regex filter to apply. Defaults to all waypoints with multiple CCS chargers
 - `--symbol`or `-s`: optional symbol to set filtered waypoints to
 
+Note:
+
+- when using `--ccs-lower`, the names of the waypoints will also be updated to start with the total number of CCS chargers
+
 Examples:
 
 - `gpxfilter.exe ccs.gpx result.gpx -s "Convenience Store"` (applies standard filter & sets symbol)

@@ -20,7 +20,7 @@ fn main() {
                     // if ccs-min parameter is present, filter by ccs count
                     let min = args.ccs_lower.unwrap_or(0);
                     let max = args.ccs_upper.unwrap_or(i32::MAX);
-                    filter_wpt_by_ccs_count(min, max, gpx)
+                    set_name_ccs_count(filter_wpt_by_ccs_count(min, max, gpx))
                 }
                 // otherwise filter by provided (or default) regex
                 None => filter_wpt_by_description(&args.filter, gpx),
