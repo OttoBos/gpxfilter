@@ -1,5 +1,6 @@
 use gpx::read;
 use gpx::Gpx;
+use gpx::Waypoint;
 use regex::Regex;
 use std::fs::File;
 use std::io::prelude::*;
@@ -25,6 +26,12 @@ pub struct Cli {
     // apply a new symbol to the resulting waypoints
     #[structopt(short = "s", long = "symbol", default_value = "")]
     pub symbol: String,
+    // filter for waypoints with at least X CCS chargers
+    #[structopt(short = "l", long = "ccs-lower")]
+    pub ccs_lower: Option<i32>,
+    // filter for waypoints with at most X CCS chargers
+    #[structopt(short = "u", long = "ccs-upper")]
+    pub ccs_upper: Option<i32>,
 }
 
 /// Load a GPX file from the path specified
@@ -45,7 +52,7 @@ pub fn load_gpx(path: std::path::PathBuf) -> Result<Gpx, Box<dyn std::error::Err
     Ok(read(reader)?)
 }
 
-// filter the waypoints of a gpx based on a regex on the description
+// filter the waypoints based on a regex on the description
 pub fn filter_wpt_by_description(filter: &str, input_gpx: Gpx) -> Gpx {
     let re = Regex::new(filter).unwrap();
     let empty_string = String::new();
@@ -59,6 +66,33 @@ pub fn filter_wpt_by_description(filter: &str, input_gpx: Gpx) -> Gpx {
         waypoints: found_waypoints,
         ..input_gpx
     }
+}
+
+// filter waypoints specifically for a number of CCS chargers, min and max values both inclusive
+pub fn filter_wpt_by_ccs_count(min: i32, max: i32, input_gpx: Gpx) -> Gpx {
+    let ccs_regex = r"\b(\d+)\b x Combo Typ 2 \(CCS\)";
+    let re = Regex::new(ccs_regex).unwrap();
+    let found_waypoints = input_gpx
+        .waypoints
+        .into_iter()
+        .filter(|wp| {
+            let x = sum_ccs(&wp, &re);
+            x >= min && x <= max
+        })
+        .collect();
+
+    Gpx {
+        waypoints: found_waypoints,
+        ..input_gpx
+    }
+}
+
+// helper function to sum all captures
+fn sum_ccs(wpt: &Waypoint, re: &Regex) -> i32 {
+    let empty_string = String::new();
+    re.captures_iter(&wpt.description.as_ref().unwrap_or(&empty_string))
+        .map(|m| m.get(1).unwrap().as_str().parse::<i32>().unwrap_or(0))
+        .sum()
 }
 
 // update the GPX symbol of the waypoints
