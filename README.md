@@ -2,9 +2,9 @@
 
 Loads and filters waypoints based on a regex (on the waypoint description)
 
-Written to filter GPX files with electric vehicle chargers.
+Written to filter GPX files with electric vehicle charger POI from <https://www.goingelectric.de/>
 
-Use: `gpxfilter.exe inputfile outputfile [-cl value] [-cu value] [-f filter] [-s symbol]`
+Use: `gpxfilter.exe inputfile outputfile [-l value] [-u value] [-f filter] [-s symbol]`
 
 Where:
 
@@ -22,4 +22,4 @@ Note:
 Examples:
 
 - `gpxfilter.exe ccs.gpx result.gpx -s "Convenience Store"` (applies standard filter & sets symbol)
-- `gpxfilter.exe ccs.gpx result.pcs -l 1 -u 1` (returns waypoints with exactly one CCS charger)
+- `gpxfilter.exe ccs.gpx result.gpx -l 1 -u 1` (returns waypoints with exactly one CCS charger)

@@ -7,6 +7,6 @@ edition = "2018"
 
 [dependencies]
 structopt = "0.3.13"
-gpx = "0.8.5"
+gpx = "0.8.6"
 unicode-bom = "1.1.4"
 regex = "1"
