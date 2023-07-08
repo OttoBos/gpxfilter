@@ -146,33 +146,34 @@ pub fn write_gpx(
     gpx: &Gpx,
     path: &std::path::PathBuf,
     batch: &Option<usize>,
-) -> Result<(), Box<dyn std::error::Error>> {
+) -> Result<i32, Box<dyn std::error::Error>> {
     let waypoint_count = gpx.waypoints.len();
     let batch = batch.unwrap_or_else(|| waypoint_count);
 
     if waypoint_count <= batch || batch == 0 || waypoint_count == 0 {
-        return Ok(write_gpx_file(&gpx, &path)?);
+        write_gpx_file(&gpx, &path)?;
+        return Ok(0);
     }
 
     let mut counter = 1;
     let splitted_waypoints = gpx.waypoints.chunks(batch);
+    let file_name = path.file_stem().unwrap().to_str().unwrap().to_owned();
     for chunk_of_waypoints in splitted_waypoints {
         let gpx_clone = Gpx::clone(&gpx);
         let path_clone = PathBuf::clone(&path);
+        let new_file_name = format!("{}_{}", file_name, counter);
+        let new_file_name = change_file_name(path_clone, &new_file_name.as_str());
+        println!("-> Writing file {}.", new_file_name.display());
         write_gpx_file(
             &Gpx {
                 waypoints: chunk_of_waypoints.to_vec(),
                 ..gpx_clone
             },
-            &change_file_name(
-                path_clone,
-                &(path.file_name().unwrap().to_str().unwrap().to_owned()
-                    + (format!("_{}", counter)).as_str()),
-            ),
+            &new_file_name,
         )?;
         counter += 1;
     }
-    Ok(())
+    Ok(counter - 1)
 }
 
 // internal function to write file

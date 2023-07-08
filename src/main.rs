@@ -36,8 +36,8 @@ fn main() {
 
             // write result to output file
             match write_gpx(&filtered_gpx, &args.output, &args.batch) {
-                Ok(_) => {
-                    println!("Done!")
+                Ok(file_count) => {
+                    println!("Done, wrote {} files.", file_count)
                 }
                 Err(e) => {
                     println!("{}", e)
