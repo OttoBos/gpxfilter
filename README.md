@@ -13,7 +13,8 @@ Where:
 - `--ccs-lower` or `-l`: minimum amount of ccs points to be present (in total for waypoint), leave empty to use `filter` argument
 - `--ccs-upper` or `-u`: maximum amount of ccs points. Not used if ccs-lower is not present. If not provided, no upper limit is applied
 - `--filter` or `-f`: regex filter to apply. Defaults to all waypoints with multiple CCS chargers
-- `--symbol`or `-s`: optional symbol to set filtered waypoints to
+- `--symbol` or `-s`: optional symbol to set filtered waypoints to
+- `--batch` or `-b`: save the result to multiple files of no more than n waypoints. If not present, saves all into one file.
 
 Note:
 
@@ -23,3 +24,7 @@ Examples:
 
 - `gpxfilter.exe ccs.gpx result.gpx -s "Convenience Store"` (applies standard filter & sets symbol)
 - `gpxfilter.exe ccs.gpx result.gpx -l 1 -u 1` (returns waypoints with exactly one CCS charger)
+
+Final note:
+
+- please don't use any of this code as example on how to write proper Rust. It compiles - that is all I could hope for.

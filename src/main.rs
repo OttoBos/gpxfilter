@@ -35,7 +35,7 @@ fn main() {
             }
 
             // write result to output file
-            match write_gpx(&filtered_gpx, args.output) {
+            match write_gpx(&filtered_gpx, &args.output, &args.batch) {
                 Ok(_) => {
                     println!("Done!")
                 }
