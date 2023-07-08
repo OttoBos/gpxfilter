@@ -151,8 +151,9 @@ pub fn write_gpx(
     let batch = batch.unwrap_or_else(|| waypoint_count);
 
     if waypoint_count <= batch || batch == 0 || waypoint_count == 0 {
+        println!("-> Writing file {}.", &path.display());
         write_gpx_file(&gpx, &path)?;
-        return Ok(0);
+        return Ok(1);
     }
 
     let mut counter = 1;
